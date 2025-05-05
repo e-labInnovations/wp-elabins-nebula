@@ -1,0 +1,65 @@
+.wrap {
+  margin: 20px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ccd0d4;
+  border-radius: 4px;
+  margin-top: 20px;
+  padding: 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.card h2 {
+  margin-top: 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.form-table td {
+  padding: 15px 10px;
+}
+
+.form-table th {
+  padding: 15px 10px;
+  width: 200px;
+}
+
+.form-table input[type="text"] {
+  width: 25em;
+  max-width: 100%;
+}
+
+.form-table .description {
+  margin-top: 5px;
+  color: #666;
+  font-style: italic;
+}
+
+.wp-list-table {
+  margin-top: 10px;
+}
+
+.wp-list-table th {
+  font-weight: 600;
+}
+
+.wp-list-table td {
+  vertical-align: middle;
+}
+
+.wp-list-table .button-small {
+  margin: 0;
+}
+
+.notice {
+  margin: 15px 0;
+}
+
+.notice p {
+  margin: 0.5em 0;
+  padding: 2px;
+}
