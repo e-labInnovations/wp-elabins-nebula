@@ -30,20 +30,7 @@ require_once WP_ELABINS_NEBULA_PLUGIN_DIR . 'includes/class-wp-elabins-nebula-ad
 require_once WP_ELABINS_NEBULA_PLUGIN_DIR . 'includes/class-wp-elabins-nebula-router.php';
 
 // Activation hook
-register_activation_hook(__FILE__, 'wp_elabins_nebula_activate');
-function wp_elabins_nebula_activate() {
-  // Create react-apps directory if it doesn't exist
-  if (!file_exists(WP_ELABINS_NEBULA_REACT_APPS_DIR)) {
-    wp_mkdir_p(WP_ELABINS_NEBULA_REACT_APPS_DIR);
-  }
-
-  // Add .htaccess to protect the directory
-  $htaccess_content = "Options -Indexes\nDeny from all";
-  file_put_contents(WP_ELABINS_NEBULA_REACT_APPS_DIR . '/.htaccess', $htaccess_content);
-
-  // Flush rewrite rules
-  flush_rewrite_rules();
-}
+register_activation_hook(__FILE__, array('WP_Elabins_Nebula', 'activate'));
 
 // Deactivation hook
 register_deactivation_hook(__FILE__, 'wp_elabins_nebula_deactivate');
