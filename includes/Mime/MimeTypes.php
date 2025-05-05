@@ -1,6 +1,6 @@
 <?php
 
-final class MimeTypes implements MimeTypesInterface {
+final class MimeTypes {
 
     public function __construct(array $map = []) {
     }

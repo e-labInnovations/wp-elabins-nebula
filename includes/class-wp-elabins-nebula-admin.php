@@ -92,6 +92,43 @@ class WP_Elabins_Nebula_Admin {
       exit;
     }
 
+    // Handle new version deployment
+    if (isset($_POST['deploy_version']) && isset($_POST['project_id'])) {
+      $project_id = intval($_POST['project_id']);
+
+      // Get project details
+      global $wpdb;
+      $project = $wpdb->get_row($wpdb->prepare(
+        "SELECT * FROM {$wpdb->prefix}nebula_projects WHERE id = %d",
+        $project_id
+      ));
+
+      if (!$project) {
+        wp_redirect(add_query_arg('error', 'project_not_found'));
+        exit;
+      }
+
+      // Handle file upload
+      if (!isset($_FILES['react_app']) || empty($_FILES['react_app']['name'])) {
+        wp_redirect(add_query_arg('error', 'no_file'));
+        exit;
+      }
+
+      $result = $this->handle_file_upload($_FILES['react_app'], $project->slug, $project_id);
+
+      if (is_wp_error($result)) {
+        wp_redirect(add_query_arg('error', $result->get_error_code()));
+        exit;
+      }
+
+      wp_redirect(add_query_arg(array(
+        'page' => $this->plugin_name,
+        'project' => $project->slug,
+        'message' => 'deployed'
+      )));
+      exit;
+    }
+
     // Handle new app creation
     if (isset($_POST['submit'])) {
       $slug = sanitize_title($_POST['app_slug']);

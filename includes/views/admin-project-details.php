@@ -21,6 +21,29 @@ if (!defined('WPINC')) {
         break;
     }
   }
+
+  if (isset($_GET['error'])) {
+    switch ($_GET['error']) {
+      case 'project_not_found':
+        echo '<div class="notice notice-error"><p>Project not found.</p></div>';
+        break;
+      case 'no_file':
+        echo '<div class="notice notice-error"><p>Please select a file to upload.</p></div>';
+        break;
+      case 'upload_error':
+        echo '<div class="notice notice-error"><p>File upload failed. Please try again.</p></div>';
+        break;
+      case 'invalid_type':
+        echo '<div class="notice notice-error"><p>Invalid file type. Only ZIP files are allowed.</p></div>';
+        break;
+      case 'directory_error':
+        echo '<div class="notice notice-error"><p>Failed to create app directory. Please check permissions.</p></div>';
+        break;
+      case 'zip_error':
+        echo '<div class="notice notice-error"><p>Failed to process ZIP file. Please ensure it\'s a valid ZIP archive.</p></div>';
+        break;
+    }
+  }
   ?>
 
   <div class="nebula-project-header">
